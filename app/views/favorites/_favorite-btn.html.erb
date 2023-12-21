@@ -1,0 +1,12 @@
+<% if book.favorited_by?(current_user) %>
+  <!--remote: true を追加することで非同期通信に出来る-->
+  <%= link_to book_favorites_path(book), method: :delete, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= book.favorites.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to book_favorites_path(book), method: :post, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+    <%= book.favorites.count %> いいね
+  <% end %>
+<% end %>
