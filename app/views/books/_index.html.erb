@@ -17,14 +17,15 @@
         <td><%= link_to book.title,book_path(book) %></td>
         <td><%= book.body %></td>
 
-        <!--IDを要素に追加することで、その要素を独自に特定できる-->
-        <!--create.js.erb-->
+        <!--"favorite_btn_・・・"はcreate.js.erb等にしようするセレクタ名-->
+        <!--classではなくidでもよい-->
         <!--book.id は各本を特定するための識別子-->
         <td class = "favorite_btn_<%= book.id %>">
           <%= render "favorites/favorite-btn", book: book %>
         </td>
-        <td>
-          <p>コメント数：<%= book.book_comments.count %></p>
+
+        <td class="comment_counter">
+          <%= render "bookcomments/counter", book: book %>
         </td>
       </tr>
     <% end %>
