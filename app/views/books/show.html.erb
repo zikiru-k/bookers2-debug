@@ -28,10 +28,14 @@
           <td class = "favorite_btn_<%= @book.id %>">
             <%= render "favorites/favorite-btn", book: @book %>
           </td>
+          <!--回答の記述方法-->
+          <!--<td class=%= "favorite-" + @book.id.to_s %> >-->
+            <!--%= render "favorites/btn", book: @book %>-->
+          <!--</td>-->
 
           <!--コメント数の表示-->
-          <td id="comment_counter">
-            <%= render "bookcomments/counter", book: @book %>
+          <td class="book-comments-counter">
+            <%= render "book_comments/counter", book: @book %>
           </td>
 
           <% if @book.user == current_user %>
@@ -42,12 +46,12 @@
       </table>
 
       <!--コメント一覧表示-->
-      <div id="comment_index">
-        <%= render "bookcomments/index", book: @book %>
+      <div class="book-comments-index">
+        <%= render "book_comments/index", book: @book %>
       </div>
 
       <!--コメント投稿フォーム-->
-      <%= render "bookcomments/form", book: @book, book_comment: @book_comment %>
+      <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
 
     </div>
   </div>

@@ -1,1 +1,6 @@
 $(".favorite_btn_<%= @book.id %>").html("<%= j(render 'favorites/favorite-btn', book: @book) %>");
+
+<!--回答の方はcreateとdestroyを分けずに作成-->
+<!--/exercise6_answer/exercise6_answer/app/views/favorites/replace_btn.js.erb-->
+<!--コメントアウトの為、＜は削除-->
+<!--$('.favorite-%= @favorite.book_id %>').html("%= j(render 'favorites/btn',  book: @favorite.book ) %>")-->

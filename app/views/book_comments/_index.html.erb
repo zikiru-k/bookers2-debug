@@ -12,6 +12,7 @@
       <td>
         <% if book_comment.user == current_user %>
           <!--remote: trueを追加-->
+          <!--class: "btn btn-danger pull-right"-->
           <%= link_to "Destroy", book_book_comment_path(book, book_comment), class: "btn btn-sm btn-danger", method: :delete, remote: true %>
         <% end %>
       </td>

@@ -1,0 +1,6 @@
+<!--form_withヘルパーではlocal: falseを指定することで、非同期通信を行うことができる-->
+<!--model～localまで（）で囲む必要あり-->
+<%= form_with(model:[book, book_comment], local: false) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
+  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>

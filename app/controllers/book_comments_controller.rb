@@ -8,11 +8,16 @@ class BookCommentsController < ApplicationController
     @comment.book_id = book.id
     @comment.save
     # redirect_to request.referer
+
+    # 回答の方はrender 'replace_btn'
   end
 
   def destroy
-    @comment = BookComment.find(params[:id]).destroy
+    @comment = BookComment.find(params[:id])
+    @comment.destroy
     # redirect_to request.referer
+
+    # 回答の方はrender 'replace_btn'
   end
 
   private
