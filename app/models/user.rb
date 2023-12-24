@@ -21,12 +21,12 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   # 指定したユーザーをフォローする
-  def follow(user_id)
-    active_relationships.create(followed_id: user_id)
+  def follow(user)
+    active_relationships.create(followed_id: user.id)
   end
   # 指定したユーザーのフォローを解除する
-  def unfollow(user_id)
-    active_relationships.find_by(followed_id: user_id).destroy
+  def unfollow(user)
+    active_relationships.find_by(followed_id: user.id).destroy
   end
   # 指定したユーザーをフォローしているかどうかを判定
   def following?(user)
