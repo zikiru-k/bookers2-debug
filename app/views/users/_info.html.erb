@@ -22,6 +22,10 @@
   <% if current_user != user %>
     <td><%= render "relationships/btn", user: user, options: { class: ""} %></td>
   <% end %>
+
+  <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
+    <td><%= link_to 'chatを始める', chat_path(user.id), class: "ml-3" %></td>
+  <% end %>
 </div>
 
 <div class='row'>
