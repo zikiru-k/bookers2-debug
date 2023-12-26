@@ -5,10 +5,14 @@ class Book < ApplicationRecord
   has_many :week_favorites, -> { where(created_at: 1.week.ago.beginning_of_day..Time.current.end_of_day) }
   has_many :read_counts, dependent: :destroy
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   
 >>>>>>> 6dd02cd ([Add] 課題9a ページ閲覧数をカウントし表示させる)
+=======
+
+>>>>>>> 31bbf76 ([Add] 課題7b 投稿数の表示, 前日比・先週比の表示)
   # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べます。
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
