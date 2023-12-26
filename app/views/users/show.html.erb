@@ -83,6 +83,70 @@
         </tbody>
       </table>
 
+      <canvas id="postCountChart"></canvas>
+      <script>
+        // ページが読み込まれたときの処理
+        $(document).on('turbolinks:load', function() {
+          // グラフを描画するためのCanvas要素を取得
+          var ctx = document.getElementById("postCountChart");
+
+          // Chart.jsを使ってグラフを作成
+          var postCountChart = new Chart(ctx, {
+            type: 'line', // ラインチャートを使用
+
+            data: {
+              // グラフのラベル（x軸の値）
+              labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+
+              datasets: [
+                {
+                  // データセットのラベル
+                  label: '投稿した本の数',
+
+                  // データセットの値
+                  data: [
+                    <%= @books.created_6day_ago.count %>, // 6日前の投稿数
+                    <%= @books.created_5day_ago.count %>, // 5日前の投稿数
+                    <%= @books.created_4day_ago.count %>, // 4日前の投稿数
+                    <%= @books.created_3day_ago.count %>, // 3日前の投稿数
+                    <%= @books.created_2day_ago.count %>, // 2日前の投稿数
+                    <%= @books.created_yesterday.count %>, // 昨日の投稿数
+                    <%= @books.created_today.count %> // 今日の投稿数
+                  ],
+
+                  // グラフの線の色（緑）
+                  borderColor: "rgba(0, 255, 0, 1)",
+
+                  // グラフの背景色（透明）
+                  backgroundColor: "rgba(0, 0, 0, 0)",
+
+                  // グラフの曲線の滑らかさ（0から1の範囲で設定。数値が大きくなるほど曲線が滑らかになる）
+                  tension: 0.3
+                }
+              ],
+            },
+
+            options: {
+              title: {
+                // グラフのタイトル表示
+                display: true,
+                text: '7日間の投稿数の比較'
+              },
+
+              responsive: true, // グラフのレスポンシブデザインを有効化
+
+              scales: {
+                y: {
+                  // y軸（縦軸）の設定。設定しないと自動になるので書かなくても良い。
+                  suggestedMin: 0, // 最小値を0に設定
+                  suggestedMax: 10 // 最大値を10に設定
+                },
+              },
+            }
+          });
+        });
+      </script>
+
     </div>
   </div>
 </div>
