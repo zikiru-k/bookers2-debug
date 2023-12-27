@@ -92,7 +92,7 @@
 
           // Chart.jsを使ってグラフを作成
           var postCountChart = new Chart(ctx, {
-            type: 'line', // ラインチャートを使用
+            type: 'line', // type: 'line'で折れ線グラフ(ラインチャート)を使用
 
             data: {
               // グラフのラベル（x軸の値）
@@ -104,15 +104,7 @@
                   label: '投稿した本の数',
 
                   // データセットの値
-                  data: [
-                    <%= @books.created_6day_ago.count %>, // 6日前の投稿数
-                    <%= @books.created_5day_ago.count %>, // 5日前の投稿数
-                    <%= @books.created_4day_ago.count %>, // 4日前の投稿数
-                    <%= @books.created_3day_ago.count %>, // 3日前の投稿数
-                    <%= @books.created_2day_ago.count %>, // 2日前の投稿数
-                    <%= @books.created_yesterday.count %>, // 昨日の投稿数
-                    <%= @books.created_today.count %> // 今日の投稿数
-                  ],
+                  data: <%= @this_week_book_counts %>,
 
                   // グラフの線の色（緑）
                   borderColor: "rgba(0, 255, 0, 1)",

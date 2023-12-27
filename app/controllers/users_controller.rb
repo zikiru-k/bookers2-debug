@@ -15,6 +15,14 @@ class UsersController < ApplicationController
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
     @last_week_book = @books.created_last_week
+
+    # 空の配列を定義しています。この配列には投稿された本の数を１日ずつ追加します。
+    @this_week_book_counts = []
+    6.downto(0) do |n|
+      # pushメソッドは配列に要素を追加するメソッド
+      # pushの引数にn日前に投稿された本の数を渡し、@this_week_book_counts配列に追加しています！
+      @this_week_book_counts.push(@books.where(created_at: n.day.ago.all_day).count)
+    end
   end
 
   def edit
