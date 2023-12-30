@@ -14,9 +14,11 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    get 'posts_on_date' => 'users#posts_on_date'
   end
 
   resources :chats, only: [:show, :create, :destroy]
+  resources :groups, only: [:index, :show, :new, :create, :edit, :update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

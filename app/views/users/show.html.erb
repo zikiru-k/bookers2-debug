@@ -13,6 +13,9 @@
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
 
+      <!--指定した日の記録を表示（非同期通信化）-->
+      <%= render "posts_on_date_form", user: @user %>
+
       <h3>投稿数の前日比・先週比</h3>
       <div class="table_container">
         <table class="table table-bordered">
